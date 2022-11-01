@@ -15,8 +15,8 @@ public class User {
 
     private String name;
     private Level level;
-    boolean winner = false;
-    boolean fail = false;
+    private boolean win;
+
 
     public User() {
         LOGGER.info("User info test");

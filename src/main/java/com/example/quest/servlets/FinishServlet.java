@@ -17,14 +17,16 @@ public class FinishServlet extends HttpServlet {
 
         User user = (User) request.getSession().getAttribute("user");
 
-        request.setAttribute("isReady", false);
-        request.setAttribute("isFail", true);
-
-        user.setLevel(null);
-        user.setFail(false);
-        user.setWinner(false);
-        request.getSession().setAttribute("user", user);
-
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        if (user.isWin()){
+            user.setWin(false);
+            request.setAttribute("win", true);
+        } else {
+            request.setAttribute("win", false);
+        }
+            user.setLevel(null);
+            request.getSession().setAttribute("user", user);
+            request.setAttribute("isFinished", true);
+            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        }
     }
-}
+

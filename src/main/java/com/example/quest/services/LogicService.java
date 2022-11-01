@@ -13,16 +13,14 @@ public class LogicService {
            return user;
        }
        if (user.getLevel().getId() == 3){
-           user.setWinner(true);
            user.setLevel(service.getLevels().get(1));
-           return user;
-       }
-       if (user.isFail()) {
-           user.setLevel(service.getLevels().get(1));
+           user.setWin(true);
            return user;
        }
         Level nextLevel = user.getLevel().getNextLevel();
         user.setLevel(nextLevel);
         return user;
     }
+
+
 }

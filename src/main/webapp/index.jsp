@@ -62,7 +62,7 @@
 
             <c:if test="${user != null}">
 
-           <% User user = (User) request.getSession().getAttribute("user"); %>
+                    <% User user = (User) request.getSession().getAttribute("user"); %>
 
             <c:if test="${isReady == false}">
 
@@ -77,7 +77,7 @@
     </figure>
 </section>
 
-<c:if test="${isWinner != true && isReady == true && isFail != true}">
+<c:if test="${isReady == true}">
 
 <div class="container">
     <div class="row">
@@ -93,12 +93,15 @@
     <button onclick="window.location='/logic'" class="col">
         <%=user.getLevel().getPositiveText()%>
     </button>
-    <button onclick="window.location='/logic?isFail=true'" class="col">
+    <button onclick="window.location='/finish'" class="col">
         <%=user.getLevel().getNegativeText()%>
     </button>
+
     </c:if>
 
-    <c:if test="${isWinner == true}">
+    <c:if test="${isFinished == true}">
+    <c:if test="${win == true}">
+
     <div class="container text-center">
         <h1 class="text-center text-white">
             Победа <%=user.getName()%>, тебя вернули домой, ура
@@ -109,14 +112,18 @@
     </div>
     </c:if>
 
-    <c:if test="${isFail == true}">
+    <c:if test="${win == false}">
+    <div class="container text-center">
         <h1 class="text-center text-white">
             <%=user.getName()%>, ты проиграл, печально
         </h1>
         <button onclick="window.location='/logic'" class="col">
             Повторить
         </button>
+        </div>
     </c:if>
+    </c:if>
+
     </c:if>
 
 </div>

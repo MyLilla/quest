@@ -1,7 +1,6 @@
 package com.example.quest.servlets;
 
 import com.example.quest.dates.User;
-import com.example.quest.services.CreateService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,8 +31,7 @@ public class InitServlet extends HttpServlet {
         LOGGER.info("Create User: {}", user);
 
         session.setAttribute("user", user);
-        session.setAttribute("isReady", false);
-
+        request.setAttribute("isReady", false);
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

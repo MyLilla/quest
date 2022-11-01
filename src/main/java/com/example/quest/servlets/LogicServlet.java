@@ -20,15 +20,16 @@ public class LogicServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         User user = (User) request.getSession().getAttribute("user");
-
         User newUser = service.getNextLevel(user);
 
-        request.getSession().setAttribute("user", newUser);
-        request.setAttribute("isReady", true);
-        request.setAttribute("isWinner", user.isWinner());
-        request.setAttribute("isFail", user.isFail());
+        if (newUser.isWin()) {
+            response.sendRedirect("/finish");
+        } else {
 
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            request.getSession().setAttribute("user", newUser);
+            request.setAttribute("isReady", "true");
+            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        }
     }
 }
 
