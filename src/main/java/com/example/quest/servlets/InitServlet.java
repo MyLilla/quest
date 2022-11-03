@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-
 @WebServlet(name = "InitServlet", value = "/init")
 public class InitServlet extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(InitServlet.class);

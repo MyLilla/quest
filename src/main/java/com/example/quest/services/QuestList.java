@@ -8,7 +8,6 @@ import org.apache.logging.log4j.Logger;
 import java.util.*;
 
 public class QuestList {
-
     private static final Logger LOGGER = LogManager.getLogger(QuestList.class);
     @Getter
     private final List<Level> levelsList;
@@ -40,7 +39,6 @@ public class QuestList {
         Level level4 = new Level(4, "Победа");
 
         List<Level> levels = new ArrayList<>();
-
         levels.add(0, level0);
         levels.add(1, level1);
         levels.add(2, level2);
