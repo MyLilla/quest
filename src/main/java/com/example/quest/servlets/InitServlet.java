@@ -16,9 +16,7 @@ import java.io.IOException;
 
 @WebServlet(name = "InitServlet", value = "/init")
 public class InitServlet extends HttpServlet {
-
     private static final Logger LOGGER = LogManager.getLogger(InitServlet.class);
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LOGGER.debug("InitServlet. Get request {}", request);

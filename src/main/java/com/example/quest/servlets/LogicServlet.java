@@ -1,8 +1,9 @@
 package com.example.quest.servlets;
 
-import com.example.quest.dates.Level;
 import com.example.quest.dates.User;
-import com.example.quest.services.LogicService;
+import com.example.quest.services.QuestService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,15 +15,19 @@ import java.io.IOException;
 @WebServlet(name = "LogicServlet", value = "/logic")
 public class LogicServlet extends HttpServlet {
 
-    LogicService service = new LogicService();
-
+    private static final Logger LOGGER = LogManager.getLogger(LogicServlet.class);
+    public final QuestService QuestService = new QuestService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         User user = (User) request.getSession().getAttribute("user");
-        User newUser = service.getNextLevel(user);
+        LOGGER.info("New GET: {} from: {}", request, user);
+
+        User newUser = QuestService.getNextLevel(user);
+        LOGGER.info("Update user {}, to newUser: {}", user, newUser);
 
         if (newUser.isWin()) {
+            LOGGER.info("User: {} is winner", user);
             response.sendRedirect("/finish");
         } else {
 

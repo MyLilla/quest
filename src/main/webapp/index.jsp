@@ -29,9 +29,8 @@
                 <div class="test">
                     <button id="btnRule" class="btn ruleButton">О правилах квеста</button>
                     <p id="aboutText" class="hideText">Это квест игра, в которой нужно принимать решения.
-                        На каждом уровне ты будешь получать вопрос и два варианта ответа. Если ты выберишь правильный
-                        вариант,
-                        ты перейдешь на новый уровень. А в конце можно выиграть.</p>
+                        На каждом уровне ты будешь получать вопрос и только два варианта ответа. Если ты выберишь правильный
+                        вариант, ты перейдешь на новый уровень. А в конце можно выиграть.</p>
                 </div>
                 <script>
                     btnRule.onclick = function () {
@@ -50,9 +49,9 @@
 
     <c:if test="${user == null}">
     <figure class="text-center">
-        <p id="helloText">
+        <h1 id="helloText">
             Чтобы начать квест, нужно представиться
-        </p>
+        </h1>
 
         <form action="/init">
             Твое имя: <input name="name"/>
@@ -66,9 +65,11 @@
 
             <c:if test="${isReady == false}">
 
-            <p>Привет <%=user.getName()%>! Тебе будут даны 2 варианта, правильный
-                только 1. Нажми "Начать" когда будешь готов.
-                И да, у тебя только 1 попытка на ответ <span>&#128513</span></p>
+            <h3> События квеста начинаются в ближайшем будущем, когда люди все ж создали полноценный
+                разум. Люди его контролировали, но в испытательном центре произошел сбой,
+                и Разум получил доступ к интернету.</h3>
+            <h4> Нажми "Начать" когда будешь готов.
+                И да, у тебя только 1 попытка на ответ <span>&#128513</span></h4>
             <button onclick="window.location='/logic'" class="btn btn-danger">
                 Начать
             </button>
@@ -81,7 +82,7 @@
 
 <div class="container">
     <div class="row">
-        <h1 class="text-center text-white">
+        <h1 class="text-center text-green">
             <p>
                 <%=user.getLevel().getQuestion()%>
             </p>
@@ -103,8 +104,8 @@
     <c:if test="${win == true}">
 
     <div class="container text-center">
-        <h1 class="text-center text-white">
-            Победа <%=user.getName()%>, тебя вернули домой, ура
+        <h1 class="text-center text-green">
+            Победа <%=user.getName()%>, теперь ты живешь в лесу. Зато, никакого программирования)
         </h1>
         <button onclick="window.location='/logic'" class="col">
             Начать снова
@@ -114,9 +115,11 @@
 
     <c:if test="${win == false}">
     <div class="container text-center">
-        <h1 class="text-center text-white">
-            <%=user.getName()%>, ты проиграл, печально
-        </h1>
+        <h2 class="text-center text-red">
+            <p>
+            <%=user.getName()%>, ты проиграл, ${failText}
+            <p/>
+        </h2>
         <button onclick="window.location='/logic'" class="col">
             Повторить
         </button>
