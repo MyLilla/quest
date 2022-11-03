@@ -18,14 +18,14 @@ public class InitServlet extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(InitServlet.class);
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LOGGER.debug("InitServlet. Get request {}", request);
+        LOGGER.info("Get request {}", request);
 
         HttpSession session = request.getSession(true);
         LOGGER.info("Save session {}", session.getId());
 
         User user = new User();
         user.setName(request.getParameter("name"));
-        LOGGER.info("Create User: {}", user);
+        LOGGER.info("Create User: {} With name: {}", user, request.getParameter("name"));
 
         session.setAttribute("user", user);
         request.setAttribute("isReady", false);

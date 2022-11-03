@@ -19,7 +19,8 @@ public class FinishServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         User user = (User) request.getSession().getAttribute("user");
-        LOGGER.info("GET: {} from user: {}", request, user);
+        LOGGER.info("New request: {} from user: {}", request, user);
+        request.getSession().setAttribute("user", user);
 
         if (user.isWin()){
             LOGGER.info("User {} is winner", user);
@@ -33,6 +34,7 @@ public class FinishServlet extends HttpServlet {
             user.setLevel(null);
             request.getSession().setAttribute("user", user);
             request.setAttribute("isFinished", true);
+            LOGGER.info("Reset user's {} progress", user);
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }

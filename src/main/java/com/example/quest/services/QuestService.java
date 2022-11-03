@@ -11,23 +11,32 @@ public class QuestService {
 
     public User getNextLevel (User user) {
 
-       if (user.getLevel() == null) {
-           user.setLevel(questContent.getLevelsList().get(1));
-           LOGGER.info("User's {} level was null. Added first level", user);
-           return user;
-       }
-       if (user.getLevel().getId() == questContent.getLevelsList().size() - 2){
+        checkUser(user);
 
-           user.setLevel(questContent.getLevelsList().get(1));
-           LOGGER.info("User's {} level was final level. Added first level.", user);
+            if (user.getLevel() == null) {
+                user.setLevel(questContent.getLevelsList().get(1));
+                LOGGER.info("User's {} level was null. Added first level", user);
+                return user;
+            }
+            if (user.getLevel().getId() == questContent.getLevelsList().size() - 2) {
 
-           user.setWin(true);
-           LOGGER.info("User {} is win", user);
-           return user;
-       }
-        Level nextLevel = user.getLevel().getNextLevel();
-        user.setLevel(nextLevel);
-        LOGGER.info("User {} get next level: {}", user, nextLevel);
-        return user;
+                user.setLevel(questContent.getLevelsList().get(1));
+                LOGGER.info("User's {} level was final level. Added first level.", user);
+
+                user.setWin(true);
+                LOGGER.info("User {} is win", user);
+                return user;
+            }
+            Level nextLevel = user.getLevel().getNextLevel();
+            user.setLevel(nextLevel);
+            LOGGER.info("User {} get next level: {}", user, nextLevel);
+            return user;
+    }
+
+    private void checkUser (User user) {
+        if (user == null) {
+            LOGGER.error("User is null");
+            throw new RuntimeException("User is null");
+        }
     }
 }

@@ -26,109 +26,130 @@
                     Quest
                 </h1>
 
-                <div class="test">
+                <div class="text-center">
                     <button id="btnRule" class="btn ruleButton">О правилах квеста</button>
-                    <p id="aboutText" class="hideText">Это квест игра, в которой нужно принимать решения.
+                    <p id="aboutText" class="hideText text-white">Это квест игра, в которой нужно принимать решения.
                         На каждом уровне ты будешь получать вопрос и только два варианта ответа. Если ты выберишь правильный
                         вариант, ты перейдешь на новый уровень. А в конце можно выиграть.</p>
                 </div>
                 <script>
                     btnRule.onclick = function () {
                         aboutText.classList.toggle('hideText');
-                        this.innerHTML.indexOf('О правилах квеста') > -1 ? this.innerHTML = "Спрятать текст" :
+                        this.innerHTML.indexOf('О правилах квеста') > -1 ? this.innerHTML = "Спрятать текст правил" :
                             this.innerHTML = "О правилах квеста";
                     }
                 </script>
             </div>
         </div>
     </div>
-    </div>
 </header>
 
-<section id="Page" class="text-center">
+<!--Инициальзация пользователя-->
+<section id="newUser">
+    <div class="row text-center">
+        <div class="rol-12">
 
     <c:if test="${user == null}">
-    <figure class="text-center">
-        <h1 id="helloText">
+        <h2 id="helloText" class="color2">
             Чтобы начать квест, нужно представиться
-        </h1>
-
-        <form action="/init">
+        </h2>
+        <br>
             Твое имя: <input name="name"/>
             <br><br>
-            <input type="submit" class="btn btn-danger" value="Продолжить"/>
-            </c:if>
-
-            <c:if test="${user != null}">
-
-                    <% User user = (User) request.getSession().getAttribute("user"); %>
-
-            <c:if test="${isReady == false}">
-
-            <h3> События квеста начинаются в ближайшем будущем, когда люди все ж создали полноценный
-                разум. Люди его контролировали, но в испытательном центре произошел сбой,
-                и Разум получил доступ к интернету.</h3>
-            <h4> Нажми "Начать" когда будешь готов.
-                И да, у тебя только 1 попытка на ответ <span>&#128513</span></h4>
-            <button onclick="window.location='/logic'" class="btn btn-danger">
-                Начать
+            <button onclick="window.location='/init'" class="btn btn-primary">
+                Продолжить
             </button>
             </c:if>
-            <br>
-    </figure>
+    </div>
+    </div>
 </section>
+
+<c:if test="${user != null}">
+
+    <% User user = (User) request.getSession().getAttribute("user"); %>
+
+<!--Предистория-->
+<section id="preview">
+    <div class="row text-center">
+        <div class="rol-12">
+
+    <c:if test="${isReady == false}">
+
+        <h3 class="container text-center color2"> События квеста начинаются в ближайшем будущем, когда люди все ж создали полноценный
+            разум. Люди его контролировали, но в испытательном центре произошел сбой,
+            и Разум получил доступ к интернету.</h3>
+        <br><br>
+        <h5 class="color1"> Нажми "Начать" когда будешь готов.
+            И да, у тебя только 1 попытка на ответ <span>&#128513</span></h5>
+        <br>
+        <button onclick="window.location='/logic'" class="btn btn-primary">
+            Начать
+        </button>
+    </c:if>
+        </div>
+    </div>
+</section>
+
+<!--Шаги квеста-->
+<section id="questSteps">
 
 <c:if test="${isReady == true}">
 
 <div class="container">
     <div class="row">
-        <h1 class="text-center text-green">
-            <p>
+        <div class="rol-12">
+            <h1 class="text-center color2">
                 <%=user.getLevel().getQuestion()%>
-            </p>
         </h1>
     </div>
 </div>
-
+</div>
+    <br><br>
 <div class="container text-center">
-    <button onclick="window.location='/logic'" class="col">
+    <div class="row">
+    <button onclick="window.location='/logic'" class="btn next_btn">
         <%=user.getLevel().getPositiveText()%>
     </button>
-    <button onclick="window.location='/finish'" class="col">
+    <button onclick="window.location='/finish'" class="btn next_btn">
         <%=user.getLevel().getNegativeText()%>
     </button>
+        </c:if>
+    </div>
+    </div>
+</section>
 
-    </c:if>
-
+<section id="result">
     <c:if test="${isFinished == true}">
     <c:if test="${win == true}">
 
     <div class="container text-center">
-        <h1 class="text-center text-green">
-            Победа <%=user.getName()%>, теперь ты живешь в лесу. Зато, никакого программирования)
-        </h1>
-        <button onclick="window.location='/logic'" class="col">
-            Начать снова
-        </button>
+        <h2 class="text-center text-success">
+            Победа, теперь ты живешь в лесу. Зато, никакого программирования <span>&#129445</span>
+        </h2>
+        <br>
+        <button onclick="window.location='/logic'" class="btn next_btn">Повторить</button>
     </div>
     </c:if>
 
     <c:if test="${win == false}">
     <div class="container text-center">
-        <h2 class="text-center text-red">
+        <h2 class="text-center text-danger">
             <p>
-            <%=user.getName()%>, ты проиграл, ${failText}
+            Ты проиграл, ${failText}
             <p/>
         </h2>
-        <button onclick="window.location='/logic'" class="col">
-            Повторить
+        <br>
+        <button onclick="window.location='/logic'" class="btn next_btn">
+            Начать снова
         </button>
         </div>
     </c:if>
     </c:if>
+</section>
 
     </c:if>
 
 </div>
+
 </body>
 </html>

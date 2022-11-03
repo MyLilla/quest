@@ -17,13 +17,6 @@ public class Level {
     private String negativeText;
     private String failText;
 
-    public Level(int level, String text, String positiveText, String negativeText) {
-        this.id = level;
-        this.question = text;
-        this.positiveText = positiveText;
-        this.negativeText = negativeText;
-    }
-
     public Level(int level, String text, String positiveText, String negativeText, String failText) {
         this.id = level;
         this.question = text;
@@ -32,8 +25,7 @@ public class Level {
         this.failText = failText;
     }
 
-    public Level(int level, String text) {
+    public Level(int level) {
         this.id = level;
-        this.question = text;
     }
 }

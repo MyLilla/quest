@@ -21,17 +21,17 @@ public class LogicServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         User user = (User) request.getSession().getAttribute("user");
-        LOGGER.info("New GET: {} from: {}", request, user);
+        LOGGER.info("New request: {} from: {}", request, user);
 
         User newUser = QuestService.getNextLevel(user);
-        LOGGER.info("Update user {}, to newUser: {}", user, newUser);
+        LOGGER.info("Update user {}, to newUser with level: {}", user, newUser.getLevel());
+        request.getSession().setAttribute("user", newUser);
 
         if (newUser.isWin()) {
             LOGGER.info("User: {} is winner", user);
             response.sendRedirect("/finish");
         } else {
 
-            request.getSession().setAttribute("user", newUser);
             request.setAttribute("isReady", "true");
             getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         }
