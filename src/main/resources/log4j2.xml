@@ -14,15 +14,20 @@
                 </Policies>
             </RollingFile>
 
+            <RollingFile name="ErrorFile" fileName="D:/logs/error.log"
+                         filePattern="logs/error-%d{MM-dd-yyyy}.log.gz">>
+                <PatternLayout>
+                    <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+                </PatternLayout>
+                <Policies>
+                    <TimeBasedTriggeringPolicy />
+                    <SizeBasedTriggeringPolicy size="250 MB"/>
+                </Policies>
+            </RollingFile>
+
     </Appenders>
     <Loggers>
         <Logger name="InitServlet" level="info">
-            <AppenderRef ref="RollingFile"/>
-        </Logger>
-        <Logger name="CreateService" level="info">
-            <AppenderRef ref="RollingFile"/>
-        </Logger>
-        <Logger name="QuestService" level="info">
             <AppenderRef ref="RollingFile"/>
         </Logger>
         <Logger name="LogicServlet" level="info">
@@ -31,9 +36,15 @@
         <Logger name="FinishServlet" level="info">
             <AppenderRef ref="RollingFile"/>
         </Logger>
-
-        <Root name="InitServlet" level="info">
+        <Logger name="AIContentList" level="info">
             <AppenderRef ref="RollingFile"/>
+        </Logger>
+        <Logger name="AIQuest" level="info">
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
+
+        <Root level="error">
+            <AppenderRef ref="ErrorFile"/>
         </Root>
 
     </Loggers>
