@@ -12,4 +12,5 @@ public class User {
     private String name;
     private Level level;
     private boolean win;
+    private int countGames = 0;
 }

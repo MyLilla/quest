@@ -22,8 +22,8 @@ public class LogicServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 
         quest = (QuestManager) request.getSession().getAttribute("questName");
-
         User user = (User) request.getSession().getAttribute("user");
+
         LOGGER.info("New request: {} from: {}", request, user);
 
         User newUser = quest.playQuest(user);
@@ -32,7 +32,6 @@ public class LogicServlet extends HttpServlet {
         try {
             if (newUser.isWin()) {
                 LOGGER.info("User: {} is winner", user);
-
                 response.sendRedirect("/finish");
             } else {
                 request.getSession().setAttribute("user", newUser);

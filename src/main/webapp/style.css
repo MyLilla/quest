@@ -15,7 +15,7 @@ body {
     background: #eee;
 }
 section {
-    padding: 20px;
+    padding: 20px 0;
 }
 .ruleButton {
     background-color: var(--color1);
@@ -56,4 +56,8 @@ section {
 }
 .color2 {
     color: var(--color2);
+}
+.statistic {
+    padding: 5px;
+    border: 3px solid var(--color1);
 }

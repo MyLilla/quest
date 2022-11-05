@@ -21,7 +21,6 @@ public class FinishServlet extends HttpServlet {
 
         User user = (User) request.getSession().getAttribute("user");
         LOGGER.info("New request: {} from user: {}", request, user);
-        request.getSession().setAttribute("user", user);
 
         if (user.isWin()) {
             LOGGER.info("User {} is winner", user);
@@ -33,9 +32,12 @@ public class FinishServlet extends HttpServlet {
             request.setAttribute("failText", user.getLevel().getFailText());
         }
         user.setLevel(null);
+        user.setCountGames(user.getCountGames() + 1);
+        LOGGER.info("Reset user's {} progress. New Level: {}. Count game = {}",
+                user, user.getLevel(), user.getCountGames());
+
         request.getSession().setAttribute("user", user);
         request.setAttribute("isFinished", true);
-        LOGGER.info("Reset user's {} progress", user);
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

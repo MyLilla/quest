@@ -7,10 +7,11 @@ import org.apache.logging.log4j.Logger;
 
 public class AIQuest implements QuestManager {
     private static final Logger LOGGER = LogManager.getLogger(AIQuest.class);
-    private final AIContentList questContent;  // содержание контента зависит от того, что придет в конструкторе
+    private final ContentList questContent;  // содержание контента зависит от того, что придет в конструкторе
 
-    public AIQuest(AIContentList questContent) {
+    public AIQuest(ContentList questContent) {
         this.questContent = questContent;
+        LOGGER.info("Create new quest with content: {}", questContent);
     }
 
     @Override

@@ -29,9 +29,8 @@
                 <div class="text-center">
                     <button id="btnRule" class="btn ruleButton">О правилах квеста</button>
                     <p id="aboutText" class="hideText text-white">Это квест игра, в которой нужно принимать решения.
-                        На каждом уровне ты будешь получать вопрос и только два варианта ответа. Если ты выберишь
-                        правильный
-                        вариант, ты перейдешь на новый уровень. А в конце можно выиграть.</p>
+                        На каждом уровне ты будешь получать вопрос и два варианта ответа. Если ты выберишь
+                        правильный, ты перейдешь на новый уровень. Если нет - ты проиграл, но можно попробовать снова</p>
                 </div>
                 <script>
                     btnRule.onclick = function () {
@@ -81,8 +80,7 @@
                         разум. Люди его контролировали, но в испытательном центре произошел сбой,
                         и Разум получил доступ к интернету.</h3>
                     <br><br>
-                    <h5 class="color1"> Нажми "Начать" когда будешь готов.
-                        И да, у тебя только 1 попытка на ответ <span>&#128513</span></h5>
+                    <h5 class="color1"> Нажми "Начать" когда будешь готов </h5>
                     <br>
                     <button onclick="window.location='/logic'" class="btn btn-primary">
                         Начать
@@ -94,62 +92,84 @@
 
     <!--Шаги квеста-->
     <section id="questSteps">
+        <div class="row text-center">
+            <div class="rol-12">
 
-        <c:if test="${isReady == true}">
+                <c:if test="${isReady == true}">
 
-        <div class="container">
-            <div class="row">
-                <div class="rol-12">
-                    <h1 class="text-center color2">
-                        <%=user.getLevel().getQuestion()%>
-                    </h1>
+                <div class="container">
+                    <div class="row">
+                        <div class="rol-12">
+                            <h2 class="text-center color2">
+                                <%=user.getLevel().getQuestion()%>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div class="container text-center">
+                    <div class="row">
+                        <button onclick="window.location='/logic'" class="btn next_btn">
+                            <%=user.getLevel().getPositiveText()%>
+                        </button>
+                        <button onclick="window.location='/finish'" class="btn next_btn">
+                            <%=user.getLevel().getNegativeText()%>
+                        </button>
+                        </c:if>
+                    </div>
                 </div>
             </div>
         </div>
-        <br><br>
-        <div class="container text-center">
-            <div class="row">
-                <button onclick="window.location='/logic'" class="btn next_btn">
-                    <%=user.getLevel().getPositiveText()%>
-                </button>
-                <button onclick="window.location='/finish'" class="btn next_btn">
-                    <%=user.getLevel().getNegativeText()%>
-                </button>
+    </section>
+
+    <!--Результаты-->
+    <section id="result">
+        <div class="row">
+            <div class="rol-12">
+                <c:if test="${isFinished == true}">
+                    <c:if test="${win == true}">
+
+                        <div class="container text-center">
+                            <h2 class="text-center text-success">
+                                Победа, теперь ты живешь в лесу. Зато, никакого программирования <span>&#129445</span>
+                            </h2>
+                            <br><br>
+                            <button onclick="window.location='/logic'" class="btn next_btn">Повторить</button>
+                        </div>
+                    </c:if>
+
+                    <c:if test="${win == false}">
+                        <div class="container text-center">
+                            <h2 class="text-center text-danger">
+                                <p>
+                                    Ты проиграл, ${failText}
+                                <p/>
+                            </h2>
+                            <br>
+                            <button onclick="window.location='/logic'" class="btn next_btn">
+                                Начать снова
+                            </button>
+                        </div>
+                    </c:if>
                 </c:if>
             </div>
         </div>
     </section>
 
-    <section id="result">
-        <c:if test="${isFinished == true}">
-            <c:if test="${win == true}">
-
-                <div class="container text-center">
-                    <h2 class="text-center text-success">
-                        Победа, теперь ты живешь в лесу. Зато, никакого программирования <span>&#129445</span>
-                    </h2>
-                    <br>
-                    <button onclick="window.location='/logic'" class="btn next_btn">Повторить</button>
+    <!--Статистика-->
+    <section id="statistic">
+        <div class="container">
+            <div class="row">
+                <div class="col-5">
+                    <h3 class="text-center statistic">Всего попыток пройти квест: <%=user.getCountGames()%>
+                    </h3>
                 </div>
-            </c:if>
-
-            <c:if test="${win == false}">
-                <div class="container text-center">
-                    <h2 class="text-center text-danger">
-                        <p>
-                            Ты проиграл, ${failText}
-                        <p/>
-                    </h2>
-                    <br>
-                    <button onclick="window.location='/logic'" class="btn next_btn">
-                        Начать снова
-                    </button>
-                </div>
-            </c:if>
-        </c:if>
+            </div>
+        </div>
     </section>
 
 </c:if>
+
 
 </div>
 
