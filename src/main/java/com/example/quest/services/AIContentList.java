@@ -7,14 +7,14 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
-public class QuestList {
-    private static final Logger LOGGER = LogManager.getLogger(QuestList.class);
-    @Getter
-    private final List<Level> levelsList;
+public class AIContentList {
+    private static final Logger LOGGER = LogManager.getLogger(AIContentList.class);
     private static final int FINISH_LEVEL_ID = 4;
     private static final int START_LEVEL_ID = 0;
+    @Getter
+    private final List<Level> levelsList;
 
-    public QuestList() {
+    public AIContentList() {
         this.levelsList = createLevelsList();
         LOGGER.info("Created new levelsList: {}", this.levelsList);
     }
@@ -33,7 +33,7 @@ public class QuestList {
                 "пока ты пил чай, Разум подключился к твоему электрогрилю и сжег кухню");
         Level level2 = new Level(2,
                 "В мире начинается паника, Разум попал во все системы и пытается уничтожить людей. Твои действия?",
-                "Подождуь и посмотрю, что будет",
+                "Подожду и посмотрю, что будет",
                 "Включу телефон, и поспрашиваю у друзей",
                 "через телефон Разум добрался до твоего электровеника и вместо него, теперь ты сидишь в кладовке");
         Level level3 = new Level(3,

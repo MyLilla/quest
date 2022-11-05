@@ -1,6 +1,8 @@
 package com.example.quest.servlets;
 
 import com.example.quest.dates.User;
+import com.example.quest.services.AIQuest;
+import com.example.quest.services.AIContentList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,6 +31,7 @@ public class InitServlet extends HttpServlet {
 
         session.setAttribute("user", user);
         request.setAttribute("isReady", false);
+        session.setAttribute("questName", new AIQuest(new AIContentList()));  // сюда можно будет передать любой квест
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

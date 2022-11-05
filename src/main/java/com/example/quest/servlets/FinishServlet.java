@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet (name = "FinishServlet", value = "/finish")
+@WebServlet(name = "FinishServlet", value = "/finish")
 public class FinishServlet extends HttpServlet {
 
     private static final Logger LOGGER = LogManager.getLogger(FinishServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -22,7 +23,7 @@ public class FinishServlet extends HttpServlet {
         LOGGER.info("New request: {} from user: {}", request, user);
         request.getSession().setAttribute("user", user);
 
-        if (user.isWin()){
+        if (user.isWin()) {
             LOGGER.info("User {} is winner", user);
             user.setWin(false);
             request.setAttribute("win", true);
@@ -31,10 +32,10 @@ public class FinishServlet extends HttpServlet {
             request.setAttribute("win", false);
             request.setAttribute("failText", user.getLevel().getFailText());
         }
-            user.setLevel(null);
-            request.getSession().setAttribute("user", user);
-            request.setAttribute("isFinished", true);
-            LOGGER.info("Reset user's {} progress", user);
-            getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-        }
+        user.setLevel(null);
+        request.getSession().setAttribute("user", user);
+        request.setAttribute("isFinished", true);
+        LOGGER.info("Reset user's {} progress", user);
+        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
+}

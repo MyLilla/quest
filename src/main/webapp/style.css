@@ -11,7 +11,6 @@ header {
     filter: url(../img/code.png), progid:DXImageTransform.Microsoft.gradient( startColorstr=var(--color1), endColorstr=var(--color2),GradientType=1 );
     background-size: contain;
 }
-
 body {
     background: #eee;
 }
@@ -39,7 +38,6 @@ section {
     align-content: center;
     color: #eeeeee;
 }
-
 .next_btn {
     display: block;
     max-width: 200px;
@@ -52,7 +50,6 @@ section {
     color: var(--bs-white);
     background-color: var(--color2);
 }
-
 /*Цвета*/
 .color1 {
     color: var(--color1);
