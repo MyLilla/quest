@@ -56,7 +56,7 @@
                 <br>
                 Твое имя: <input name="name"/>
                 <br><br>
-                <button onclick="window.location='/init'" class="btn btn-primary">
+                <button class="btn btn-primary" onclick="window.location='<c:url value="/init"/>'">
                     Продолжить
                 </button>
             </c:if>
@@ -82,7 +82,7 @@
                     <br><br>
                     <h5 class="color1"> Нажми "Начать" когда будешь готов </h5>
                     <br>
-                    <button onclick="window.location='/logic'" class="btn btn-primary">
+                    <button onclick="window.location='<c:url value="/logic"/>'" class="btn btn-primary">
                         Начать
                     </button>
                 </c:if>
@@ -109,10 +109,10 @@
                 <br><br>
                 <div class="container text-center">
                     <div class="row">
-                        <button onclick="window.location='/logic'" class="btn next_btn">
+                        <button onclick="window.location='<c:url value="/logic"/>'" class="btn next_btn">
                             <%=user.getLevel().getPositiveText()%>
                         </button>
-                        <button onclick="window.location='/finish'" class="btn next_btn">
+                        <button onclick="window.location='<c:url value="/finish"/>'" class="btn next_btn">
                             <%=user.getLevel().getNegativeText()%>
                         </button>
                         </c:if>
@@ -134,7 +134,7 @@
                                 Победа, теперь ты живешь в лесу. Зато, никакого программирования <span>&#129445</span>
                             </h2>
                             <br><br>
-                            <button onclick="window.location='/logic'" class="btn next_btn">Повторить</button>
+                            <button onclick="window.location='<c:url value="/logic"/>'" class="btn next_btn">Повторить</button>
                         </div>
                     </c:if>
 
@@ -146,7 +146,7 @@
                                 <p/>
                             </h2>
                             <br>
-                            <button onclick="window.location='/logic'" class="btn next_btn">
+                            <button onclick="window.location='<c:url value="/logic"/>'" class="btn next_btn">
                                 Начать снова
                             </button>
                         </div>
@@ -170,8 +170,6 @@
 
 </c:if>
 
-
 </div>
-
 </body>
 </html>

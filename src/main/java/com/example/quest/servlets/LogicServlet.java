@@ -32,7 +32,7 @@ public class LogicServlet extends HttpServlet {
         try {
             if (newUser.isWin()) {
                 LOGGER.info("User: {} is winner", user);
-                response.sendRedirect("/finish");
+                response.sendRedirect(request.getContextPath() + "/finish");
             } else {
                 request.getSession().setAttribute("user", newUser);
                 request.setAttribute("isReady", "true");
