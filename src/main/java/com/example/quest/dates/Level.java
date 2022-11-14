@@ -1,16 +1,19 @@
 package com.example.quest.dates;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class Level {
 
     private int id;
     private String question;
     private String positiveText;
+
     private Level nextLevel;
     private String negativeText;
     private String failText;

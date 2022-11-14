@@ -5,11 +5,11 @@ import com.example.quest.dates.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class AIQuest implements QuestManager {
-    private static final Logger LOGGER = LogManager.getLogger(AIQuest.class);
+public class QuestService implements QuestManager {
+    private static final Logger LOGGER = LogManager.getLogger(QuestService.class);
     private final ContentList questContent;  // содержание контента зависит от того, что придет в конструкторе
 
-    public AIQuest(ContentList questContent) {
+    public QuestService(ContentList questContent) {
         this.questContent = questContent;
         LOGGER.info("Create new quest with content: {}", questContent);
     }
