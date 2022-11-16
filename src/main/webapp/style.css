@@ -3,7 +3,7 @@
     --color2: #6b28be;
 }
 header {
-    padding: 50px 0;
+    padding: 30px 0;
     background: var(--color1);
     background: url(../img/code.png), -moz-linear-gradient(left, var(--color1) 0%, var(--color2) 100%);
     background: url(../img/code.png), -webkit-linear-gradient(left, var(--color1) 0%,var(--color2) 100%);
@@ -42,13 +42,25 @@ section {
     display: block;
     max-width: 200px;
     margin: 0 auto;
-    padding: 8px 30px;
+    padding: 10px 30px;
     color: var(--bs-white);
     background-color: var(--color1);
 }
 .next_btn:hover{
     color: var(--bs-white);
     background-color: var(--color2);
+}
+.statistic_btn {
+    display: block;
+    max-width: 200px;
+    margin: 0 auto;
+    padding: 10px 30px;
+    color: var(--bs-white);
+    background-color: var(--color2);
+}
+.statistic_btn:hover{
+    color: var(--bs-white);
+    background-color: var(--color1);
 }
 /*Цвета*/
 .color1 {
@@ -58,6 +70,12 @@ section {
     color: var(--color2);
 }
 .statistic {
-    padding: 5px;
-    border: 3px solid var(--color1);
+    padding: 3px;
+    border: 2px solid var(--color1);
+}
+.modal-footer {
+    padding: 20px;
+}
+.statistic{
+    padding: 70px;
 }

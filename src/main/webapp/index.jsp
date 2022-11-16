@@ -7,16 +7,12 @@
 <head>
     <meta charset="utf-8">
     <title>Quest</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous">
-</script>
+<script src="bootstrap.bundle.min.js"></script>
 
 <header>
     <div class="container">
@@ -156,20 +152,37 @@
         </div>
     </section>
 
+ <section id="statistic">
     <!--Статистика-->
-    <section id="statistic">
-        <div class="container">
-            <div class="row">
-                <div class="col-5">
-                    <h3 class="text-center statistic">Всего попыток пройти квест: <%=user.getCountGames()%>
-                    </h3>
+    <!-- Button trigger -->
+    <button class="btn statistic_btn" data-bs-toggle="modal" data-bs-target="#statisticModal">
+        Статистка игр
+    </button>
+
+    <div class="modal fade" id="statisticModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5" id="modalLabel">Твой результат</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
+                <div class="modal-body">
+                    <h4 class="text-center statistic">Всего попыток пройти квест: <%=user.getCountGames()%>
+                    </h4>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn statistic_btn" data-bs-dismiss="modal">Скрыть</button>
+                </div>
+
             </div>
         </div>
-    </section>
+    </div>
+ </section>
 
 </c:if>
 
-</div>
 </body>
 </html>
