@@ -1,4 +1,3 @@
-<%@ page import="com.example.quest.dates.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
@@ -7,12 +6,12 @@
 <head>
     <meta charset="utf-8">
     <title>Quest</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/front/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/front/style.css">
 </head>
 <body>
 
-<script src="bootstrap.bundle.min.js"></script>
+<script src="../front/bootstrap.bundle.min.js"></script>
 
 <header>
     <div class="container">
@@ -26,7 +25,8 @@
                     <button id="btnRule" class="btn ruleButton">О правилах квеста</button>
                     <p id="aboutText" class="hideText text-white">Это квест игра, в которой нужно принимать решения.
                         На каждом уровне ты будешь получать вопрос и два варианта ответа. Если ты выберишь
-                        правильный, ты перейдешь на новый уровень. Если нет - ты проиграл, но можно попробовать снова</p>
+                        правильный, ты перейдешь на новый уровень. Если нет - ты проиграл, но можно попробовать
+                        снова</p>
                 </div>
                 <script>
                     btnRule.onclick = function () {
@@ -52,17 +52,13 @@
                 <br>
                 Твое имя: <input name="name"/>
                 <br><br>
-                <button class="btn btn-primary" onclick="window.location='<c:url value="/init"/>'">
-                    Продолжить
-                </button>
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/init">Продолжить</a>
             </c:if>
         </div>
     </div>
 </section>
 
 <c:if test="${user != null}">
-
-    <% User user = (User) request.getSession().getAttribute("user");%>
 
     <!--Предистория-->
     <section id="preview">
@@ -78,9 +74,7 @@
                     <br><br>
                     <h5 class="color1"> Нажми "Начать" когда будешь готов </h5>
                     <br>
-                    <button onclick="window.location='<c:url value="/logic"/>'" class="btn btn-primary">
-                        Начать
-                    </button>
+                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/logic">Начать</a>
                 </c:if>
             </div>
         </div>
@@ -97,7 +91,7 @@
                     <div class="row">
                         <div class="rol-12">
                             <h2 class="text-center color2">
-                                <%=user.getLevel().getQuestion()%>
+                                    ${user.getLevel().getQuestion()}
                             </h2>
                         </div>
                     </div>
@@ -105,12 +99,11 @@
                 <br><br>
                 <div class="container text-center">
                     <div class="row">
-                        <button onclick="window.location='<c:url value="/logic"/>'" class="btn next_btn">
-                            <%=user.getLevel().getPositiveText()%>
-                        </button>
-                        <button onclick="window.location='<c:url value="/finish"/>'" class="btn next_btn">
-                            <%=user.getLevel().getNegativeText()%>
-                        </button>
+                        <a class="btn next_btn" href="${pageContext.request.contextPath}/logic">
+                                ${user.getLevel().getPositiveText()}</a>
+                        <a class="btn next_btn" href="${pageContext.request.contextPath}/finish">
+                                ${user.getLevel().getNegativeText()}
+                        </a>
                         </c:if>
                     </div>
                 </div>
@@ -130,7 +123,8 @@
                                 Победа, теперь ты живешь в лесу. Зато, никакого программирования <span>&#129445</span>
                             </h2>
                             <br><br>
-                            <button onclick="window.location='<c:url value="/logic"/>'" class="btn next_btn">Повторить</button>
+                            <a class="btn next_btn" href="${pageContext.request.contextPath}/logic">Повторить
+                            </a>
                         </div>
                     </c:if>
 
@@ -142,9 +136,9 @@
                                 <p/>
                             </h2>
                             <br>
-                            <button onclick="window.location='<c:url value="/logic"/>'" class="btn next_btn">
+                            <a class="btn statistic_btn" href="${pageContext.request.contextPath}/logic">
                                 Начать снова
-                            </button>
+                            </a>
                         </div>
                     </c:if>
                 </c:if>
@@ -152,35 +146,35 @@
         </div>
     </section>
 
- <section id="statistic">
-    <!--Статистика-->
-    <!-- Button trigger -->
-    <button class="btn statistic_btn" data-bs-toggle="modal" data-bs-target="#statisticModal">
-        Статистка игр
-    </button>
+    <section id="statistic">
+        <!--Статистика-->
+        <!-- Button trigger -->
+        <button class="btn statistic_btn" data-bs-toggle="modal" data-bs-target="#statisticModal">
+            Статистка игр
+        </button>
 
-    <div class="modal fade" id="statisticModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="modal fade" id="statisticModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
 
-                <div class="modal-header">
-                    <h2 class="modal-title fs-5" id="modalLabel">Твой результат</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="modalLabel">Твой результат</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <h4 class="text-center statistic">Всего попыток пройти квест: ${user.getCountGames()}
+                        </h4>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn statistic_btn" data-bs-dismiss="modal">Скрыть</button>
+                    </div>
+
                 </div>
-
-                <div class="modal-body">
-                    <h4 class="text-center statistic">Всего попыток пройти квест: <%=user.getCountGames()%>
-                    </h4>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn statistic_btn" data-bs-dismiss="modal">Скрыть</button>
-                </div>
-
             </div>
         </div>
-    </div>
- </section>
+    </section>
 
 </c:if>
 

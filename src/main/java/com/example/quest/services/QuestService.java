@@ -1,13 +1,15 @@
 package com.example.quest.services;
 
+import com.example.quest.dates.ContentList;
 import com.example.quest.dates.Level;
+import com.example.quest.dates.QuestManager;
 import com.example.quest.dates.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class QuestService implements QuestManager {
     private static final Logger LOGGER = LogManager.getLogger(QuestService.class);
-    private final ContentList questContent;  // содержание контента зависит от того, что придет в конструкторе
+    private final ContentList questContent;
 
     public QuestService(ContentList questContent) {
         this.questContent = questContent;
@@ -15,13 +17,12 @@ public class QuestService implements QuestManager {
     }
 
     @Override
-    public User playQuest(User user) {
-        return getNextLevel(user);
-    }
+    public User startQuest(User user) {
 
-    public User getNextLevel(User user) {
-
-        checkUser(user);
+        if (user == null) {
+            LOGGER.error("User is null");
+            throw new RuntimeException("User is null");
+        }
 
         if (user.getLevel() == null) {
             user.setLevel(questContent.getLevelsList().get(1));
@@ -41,12 +42,5 @@ public class QuestService implements QuestManager {
         user.setLevel(nextLevel);
         LOGGER.info("User {} get next level: {}", user, nextLevel);
         return user;
-    }
-
-    private void checkUser(User user) {
-        if (user == null) {
-            LOGGER.error("User is null");
-            throw new RuntimeException("User is null");
-        }
     }
 }

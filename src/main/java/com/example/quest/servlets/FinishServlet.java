@@ -1,9 +1,12 @@
 package com.example.quest.servlets;
 
 import com.example.quest.dates.User;
+import com.example.quest.dates.UserRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +18,14 @@ import java.io.IOException;
 public class FinishServlet extends HttpServlet {
 
     private static final Logger LOGGER = LogManager.getLogger(FinishServlet.class);
+    UserRepository userRepository;
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        ServletContext context = config.getServletContext();
+        userRepository = (UserRepository) context.getAttribute("userRepository");
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,15 +40,14 @@ public class FinishServlet extends HttpServlet {
         } else {
             LOGGER.info("User {} loser", user);
             request.setAttribute("win", false);
-            request.setAttribute("failText", user.getLevel().getFailText());
+            request.setAttribute("failText", userRepository.getFailText(user));
         }
-        user.setLevel(null);
-        user.setCountGames(user.getCountGames() + 1);
+        userRepository.resetUserProgress(user);
         LOGGER.info("Reset user's {} progress. New Level: {}. Count game = {}",
                 user, user.getLevel(), user.getCountGames());
 
         request.getSession().setAttribute("user", user);
         request.setAttribute("isFinished", true);
-        getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
 }

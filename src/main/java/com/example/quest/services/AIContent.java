@@ -1,5 +1,6 @@
 package com.example.quest.services;
 
+import com.example.quest.dates.ContentList;
 import com.example.quest.dates.Level;
 import com.example.quest.exceptions.ReadingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -12,7 +13,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AIContent extends ContentList{
+public class AIContent extends ContentList {
     protected static final Logger LOGGER = LogManager.getLogger(AIContent.class);
 
     @Override

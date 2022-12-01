@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="info" name="MyApp" packages="">
 
-        <Appenders>
+    <Appenders>
 
-                  <RollingFile name="RollingFile" fileName="D:/logs/app.log"
-                         filePattern="logs/app-%d{MM-dd-yyyy}.log.gz">>
-                <PatternLayout>
-                    <pattern>%d %p %c{1.} [%t] %m%n</pattern>
-                </PatternLayout>
-                <Policies>
-                    <TimeBasedTriggeringPolicy />
-                    <SizeBasedTriggeringPolicy size="250 MB"/>
-                </Policies>
-            </RollingFile>
+        <RollingFile name="RollingFile" fileName="D:\Projects\quest\src\logs\app.log"
+                     filePattern="logs/app-%d{MM-dd-yyyy}.log.gz">>
+            <PatternLayout>
+                <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250 MB"/>
+            </Policies>
+        </RollingFile>
 
-            <RollingFile name="ErrorFile" fileName="D:/logs/error.log"
-                         filePattern="logs/error-%d{MM-dd-yyyy}.log.gz">>
-                <PatternLayout>
-                    <pattern>%d %p %c{1.} [%t] %m%n</pattern>
-                </PatternLayout>
-                <Policies>
-                    <TimeBasedTriggeringPolicy />
-                    <SizeBasedTriggeringPolicy size="250 MB"/>
-                </Policies>
-            </RollingFile>
+        <RollingFile name="ErrorFile" fileName="D:\Projects\quest\src\logs\error.log"
+                     filePattern="logs/error-%d{MM-dd-yyyy}.log.gz">>
+            <PatternLayout>
+                <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250 MB"/>
+            </Policies>
+        </RollingFile>
 
     </Appenders>
     <Loggers>
