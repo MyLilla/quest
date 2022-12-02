@@ -1,0 +1,81 @@
+:root {
+    --color1: #05b1b1;
+    --color2: #6b28be;
+}
+header {
+    padding: 30px 0;
+    background: var(--color1);
+    background: url(../img/code.png), -moz-linear-gradient(left, var(--color1) 0%, var(--color2) 100%);
+    background: url(../img/code.png), -webkit-linear-gradient(left, var(--color1) 0%,var(--color2) 100%);
+    background: url(../img/code.png), linear-gradient(to right, var(--color1) 0%,var(--color2) 100%);
+    filter: url(../img/code.png), progid:DXImageTransform.Microsoft.gradient( startColorstr=var(--color1), endColorstr=var(--color2),GradientType=1 );
+    background-size: contain;
+}
+body {
+    background: #eee;
+}
+section {
+    padding: 20px 0;
+}
+.ruleButton {
+    background-color: var(--color1);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    cursor: pointer;
+    margin: 30px auto;
+    transition: all 0.2s ease;
+}
+.ruleButton:hover {
+    background-color: var(--color2);
+}
+.hideText {
+    display: none;
+    align-content: center;
+    color: #eeeeee;
+}
+.next_btn {
+    display: block;
+    max-width: 200px;
+    margin: 0 auto;
+    padding: 10px 30px;
+    color: var(--bs-white);
+    background-color: var(--color1);
+}
+.next_btn:hover{
+    color: var(--bs-white);
+    background-color: var(--color2);
+}
+.statistic_btn {
+    display: block;
+    max-width: 200px;
+    margin: 0 auto;
+    padding: 10px 30px;
+    color: var(--bs-white);
+    background-color: var(--color2);
+}
+.statistic_btn:hover{
+    color: var(--bs-white);
+    background-color: var(--color1);
+}
+/*Цвета*/
+.color1 {
+    color: var(--color1);
+}
+.color2 {
+    color: var(--color2);
+}
+.statistic {
+    padding: 3px;
+    border: 2px solid var(--color1);
+}
+.modal-footer {
+    padding: 20px;
+}
+.statistic{
+    padding: 70px;
+}

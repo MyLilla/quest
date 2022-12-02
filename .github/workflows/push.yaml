@@ -1,0 +1,22 @@
+name: push
+
+on:
+  push:
+    pull-request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+       - uses: actions/checkout@v1
+       - name: set up JDK 17
+         uses: actions/setup-java@v1
+         with:
+            java-version: 17
+       - name: Start
+         run: |
+            echo 'Quest'
+       - name: Maven Package
+         run: mvn clean install
