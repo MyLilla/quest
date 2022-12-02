@@ -2,6 +2,7 @@ name: push
 
 on:
   push:
+    pull-request:
     branches:
       - '*'
 
@@ -17,7 +18,5 @@ jobs:
        - name: Start
          run: |
             echo 'Quest'
-            pwd
-            mvn -version
        - name: Maven Package
          run: mvn clean install

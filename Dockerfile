@@ -1,3 +1,7 @@
+FROM maven:3.8-amazoncorretto-17 AS MAVEN_BUILD
+COPY ./ ./
+RUN mvn clean package
+
 FROM tomcat:9-jdk17-corretto
 
-COPY ./target/quest-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/
+COPY --from=MAVEN_BUILD /target/Quest.war /usr/local/tomcat/webapps/

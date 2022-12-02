@@ -11,16 +11,14 @@
 * На протяжении сессии с пользователем, ведется статистика игр
 
 <h3><a>Сборка проекта: </a></h3>
-Maven:
-```$ mvn clean install```
-<h3 ><a>Запуск проекта:</a></h3>
-Docker:
 
 ```$ docker build -t quest .```
 
+<h3 ><a>Запуск:</a></h3>
+
 ```$ docker run -p 1111:8080 quest```
 
-link: ```localhost:8080/quest_war_exploded```
+link: ```localhost:1111/Quest```
 
 <h3 ><a>Краткое описание классов</a></h3>
 >В корне проекта:
@@ -52,4 +50,3 @@ link: ```localhost:8080/quest_war_exploded```
 - Bootstrap, CSS
 - Тестирование JUnit5, Mockito
 - библиотека lombok
-

@@ -3,8 +3,8 @@
 
     <Appenders>
 
-        <RollingFile name="RollingFile" fileName="D:\Projects\quest\src\logs\app.log"
-                     filePattern="logs/app-%d{MM-dd-yyyy}.log.gz">>
+        <RollingFile name="RollingFile" fileName="/log/app.log"
+            filePattern="logs/app-%d{MM-dd-yyyy}.log.gz">>
             <PatternLayout>
                 <pattern>%d %p %c{1.} [%t] %m%n</pattern>
             </PatternLayout>
@@ -14,8 +14,8 @@
             </Policies>
         </RollingFile>
 
-        <RollingFile name="ErrorFile" fileName="D:\Projects\quest\src\logs\error.log"
-                     filePattern="logs/error-%d{MM-dd-yyyy}.log.gz">>
+        <RollingFile name="ErrorFile" fileName="/log/error.log"
+            filePattern="logs/app-%d{MM-dd-yyyy}.log">>
             <PatternLayout>
                 <pattern>%d %p %c{1.} [%t] %m%n</pattern>
             </PatternLayout>
@@ -27,22 +27,9 @@
 
     </Appenders>
     <Loggers>
-        <Logger name="InitServlet" level="info">
+        <Logger name="com.example.quest" level="info">
             <AppenderRef ref="RollingFile"/>
         </Logger>
-        <Logger name="LogicServlet" level="info">
-            <AppenderRef ref="RollingFile"/>
-        </Logger>
-        <Logger name="FinishServlet" level="info">
-            <AppenderRef ref="RollingFile"/>
-        </Logger>
-        <Logger name="AIContentList" level="info">
-            <AppenderRef ref="RollingFile"/>
-        </Logger>
-        <Logger name="AIQuest" level="info">
-            <AppenderRef ref="RollingFile"/>
-        </Logger>
-
         <Root level="error">
             <AppenderRef ref="ErrorFile"/>
         </Root>
