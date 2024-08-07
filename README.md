@@ -1,6 +1,8 @@
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=435&lines=Quest)](https://git.io/typing-svg)
 <h2><a>text web quest</a></h2>
 
+Third project in the JavaRush course
+
 After initialization, the user is given questions and two possible answers.
 
 > The purpose of the quest is to alternately choosing the correct answers,
