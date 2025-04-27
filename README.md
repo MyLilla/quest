@@ -5,6 +5,7 @@
 Extra project for JavaRush course (module WEB)
 
 <h3><a>About: </a></h3>
+link: ```localhost:1111```
 
 > The purpose of the quest is to alternately choosing the correct answers,
 > get to the point where it leads to victory
@@ -20,7 +21,7 @@ After initialization, the user is given questions and two possible answers.
 
 <h3 ><a>Lounch:</a></h3>
 
-```$ docker run -p 1111:8080 quest```
+```$ docker run -p 1111:8080```
 
 link: ```localhost:1111```
 
