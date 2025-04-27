@@ -1,13 +1,15 @@
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=435&lines=Quest)](https://git.io/typing-svg)
-<h2><a>text web quest</a></h2>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=435&lines=Apocalypse)](https://git.io/typing-svg)
 
-Third project in the JavaRush course
+<h2><a>game-text-quest</a></h2>
 
-After initialization, the user is given questions and two possible answers.
+Extra project for JavaRush course (module WEB)
+
+<h3><a>About: </a></h3>
 
 > The purpose of the quest is to alternately choosing the correct answers,
 > get to the point where it leads to victory
->
+
+After initialization, the user is given questions and two possible answers.
 * There is only one correct answer
 * If you answer incorrectly or win, you can restart the quest
 * During the session with the user, game statistics are kept
@@ -20,36 +22,11 @@ After initialization, the user is given questions and two possible answers.
 
 ```$ docker run -p 1111:8080 quest```
 
-link: ```localhost:1111/Quest```
-
-<h3 ><a>Description of classes</a></h3>
-
->Root package:
-- ```main``` - start point to app
--  ```test``` - start point to tests
-
->Package ```main/java/com/example/quest``` has subpackage:
-- ```dates``` - main object structures and interface
-- ```exceptions``` - app's exceptions
-- ```service``` - contains application business logic and quest content
-- ```servlits``` - subpackage with servlets
-
->also has class:
-
-- ```ContextListener``` - loads application objects into the context
-
->File ```main/resources```: 
-
-- ```log4j2.xml``` - !For correct logging, you must specify the save path
-- ```content.json``` - text content of quests
-
->in derrectory ```src/main/webapp/WEB-INF```:
-- ```index.jsp``` - main page
+link: ```localhost:1111```
 
 <h3><a>Technology</a></h3>
 
 - Maven
-- JSP, JSTL
-- Bootstrap, CSS
-- JUnit5, Mockito
-- lombok
+- UI: JSP, JSTL, Bootstrap, CSS
+- Tests: JUnit5, Mockito
+- lib's: lombok

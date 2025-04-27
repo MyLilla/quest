@@ -4,5 +4,5 @@ COPY ./ ./
 RUN mvn clean package
 
 FROM tomcat:9.0.91-jdk21-corretto-al2
-COPY --from=MAVEN_BUILD /app/target/Quest.war /usr/local/tomcat/webapps/
+COPY --from=MAVEN_BUILD /app/target/ROOT.war /usr/local/tomcat/webapps/
 EXPOSE 8080
